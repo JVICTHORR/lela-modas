@@ -6,7 +6,7 @@
 // ================= CONFIGURAÇÃO DA LOJA =================
 // Insira o número do WhatsApp Business da cliente com DDD (Apenas números: código do país + DDD + número)
 // Exemplo: 5521999999999
-const STORE_WHATSAPP_NUMBER = '5521999999999';
+const STORE_WHATSAPP_NUMBER = '5521999293091';
 
 // Dataset de produtos com categoria, estoque e sinalização rated
 const products = [
