@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LÊLA MODAS | Loja Oficial</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Ícones Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+  <!-- Top Logo Minimalista -->
+  <div class="top-brand">
+    <span>L<i class="ph ph-heart-fill"></i>M</span>
+  </div>
+
+  <!-- Barra de Promoção -->
+  <div class="promo-bar">
+    SEU ESTILO, SEU JEITO, SUA MODA
+  </div>
+
+  <!-- Header / Navbar Principal -->
+  <header class="main-header">
+    <button class="icon-btn" id="btn-hamburger" aria-label="Abrir Menu">
+      <i class="ph ph-list"></i>
+    </button>
+    <button class="icon-btn" id="btn-profile" aria-label="Perfil">
+      <i class="ph ph-user"></i>
+    </button>
+    <div class="brand-title">LÊLA MODAS</div>
+    <button class="icon-btn" id="btn-favorites" aria-label="Favoritos">
+      <i class="ph ph-star-fill active-star"></i>
+    </button>
+    <button class="icon-btn" id="btn-cart" aria-label="Carrinho">
+      <i class="ph ph-shopping-bag"></i>
+    </button>
+  </header>
+
+  <!-- Barra de Busca Instantânea -->
+  <div class="search-container">
+    <div class="search-box">
+      <i class="ph ph-list menu-sub-icon"></i>
+      <input type="text" placeholder="Peça a LÊLA MODAS" id="search-input" />
+      <i class="ph ph-magnifying-glass search-icon"></i>
+    </div>
+  </div>
+
+  <!-- Main Content: Grid de Produtos -->
+  <main class="container">
+    <div class="products-grid" id="products-container">
+      <!-- Injetado dinamicamente via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Rodapé (Footer) -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>AJUDA</h4>
+        <ul>
+          <li><a href="#">Ligue para (**)****-****</a></li>
+          <li><a href="#">Cuidado com os Produtos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>NEWSLETTER</h4>
+        <ul>
+          <li><a href="#">Novas coleções de PRIMAVERA</a></li>
+          <li><a href="#">Novos kits de FIM DE ANO</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SERVIÇOS</h4>
+        <ul>
+          <li><a href="#">A arte de presentear</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SOBRE A LÊLA MODAS</h4>
+        <ul>
+          <li><a href="#">Sustentabilidade</a></li>
+          <li><a href="#">Últimas Notícias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LOJAS</h4>
+        <ul>
+          <li>Siga a LÊLA MODAS nas redes sociais</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Redes Sociais -->
+    <div class="social-links">
+      <a href="#"><i class="ph ph-x-logo"></i></a>
+      <a href="#"><i class="ph ph-instagram-logo"></i></a>
+      <a href="#"><i class="ph ph-youtube-logo"></i></a>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAIS E GAVETAS ==================== -->
+
+  <!-- Overlay de Fundo -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Drawer (Menu Lateral Hamburguer) -->
+  <aside class="drawer" id="drawer-menu">
+    <div class="drawer-header">
+      <h2>Menu</h2>
+      <button class="close-btn" id="close-drawer">&times;</button>
+    </div>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="#" class="nav-item" id="menu-categories"><i class="ph ph-squares-four"></i> Categorias</a></li>
+        <li><a href="#" class="nav-item" id="menu-top-rated"><i class="ph ph-star"></i> Mais Bem Avaliados</a></li>
+        <li><a href="#" class="nav-item" id="menu-favorites"><i class="ph ph-heart"></i> Meus Favoritos</a></li>
+        <li><a href="#" class="nav-item" id="menu-profile"><i class="ph ph-user-circle"></i> Minha Conta / Perfil</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Modal Genérico -->
+  <div class="modal" id="app-modal">
+    <div class="modal-content">
+      <button class="close-btn" id="close-modal">&times;</button>
+      <div id="modal-body">
+        <!-- Conteúdo dinâmico injetado via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
