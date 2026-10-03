@@ -269,18 +269,18 @@ function sendOrderToWhatsApp() {
   });
 
   // Montagem do texto do relatório do pedido
-  const message = `🛍️ *NOVO PEDIDO - LÊLA MODAS*\n\n` +
+  const message = `🛍️ *NOVO PEDIDO - LÉLA MODAS *\n\n` +
     `👤 *Cliente:* ${currentUser.fullname}\n` +
     `📞 *Contato:* ${currentUser.phone || 'Não informado'}\n` +
     `📧 *E-mail:* ${currentUser.email}\n\n` +
-    `📍 *ENDEREÇO DE ENTREGA:*\n` +
+    `📍 *ENDEREÇO DO CLIENTE:*\n` +
     `${addr.street || ''}, Nº ${addr.number || 'S/N'}\n` +
     `Bairro: ${addr.neighborhood || addr.bairro || ''}\n` +
     `${addr.city || ''} - ${addr.uf || ''}\n` +
     `CEP: ${addr.cep || ''}\n\n` +
     `🛒 *ITENS DO PEDIDO:*\n${itemsListText}\n` +
     `💰 *TOTAL DO PEDIDO:* R$ ${totalValue},00\n` +
-    `🚚 *FRETE:* GRÁTIS\n\n` +
+    `🚚 *FRETE:* UBER ENTREGAS OU RETIRADA NA LOJA\n\n` +
     `Gostaria de confirmar a forma de pagamento!`;
 
   // Encoda o texto para o formato de URL
@@ -298,7 +298,7 @@ function sendOrderToWhatsApp() {
     <div class="success-box">
       <i class="ph ph-check-circle"></i>
       <h2 class="success-title">Redirecionando ao WhatsApp!</h2>
-      <p class="success-desc">Seu pedido foi formatado e enviamos você diretamente para a conversa com a LÊLA MODAS no WhatsApp para finalizar a compra.</p>
+      <p class="success-desc">Seu pedido foi formatado e enviamos você diretamente para a conversa com a LÉLA MODAS no WhatsApp para finalizar a compra.</p>
       <button class="btn-primary" onclick="closeModalHandler()">Concluir</button>
     </div>
   `);
@@ -359,7 +359,7 @@ function openTopRatedModal() {
 
   openModalWithContent(`
     <h3 class="modal-title">Mais Bem Avaliados ⭐ (${topRatedProducts.length})</h3>
-    <p class="top-rated-intro">Confira as peças marcadas com o selo exclusivo de destaque da LÊLA MODAS:</p>
+    <p class="top-rated-intro">Confira as peças marcadas com o selo exclusivo de destaque da LÉLA MODAS:</p>
     
     <div class="favorites-grid">
       ${topRatedProducts.map(p => `
