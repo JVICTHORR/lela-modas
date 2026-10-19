@@ -1,136 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LÉLA MODAS | Loja Oficial</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Ícones Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LÉLA MODAS | Loja Oficial</title>
+<meta name="description" content="Seu estilo, seu jeito, sua moda. Compre online e retire na loja.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..700&display=swap">
+<style>
+:root{--a:#C8265F;--ink:#141214;--bg:#FBFAF8;--mut:#4A464B;--ln:#E8E4DF;--f:'Bricolage Grotesque',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Manrope',sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;padding-bottom:72px}
+button,input,select{font:inherit}button{cursor:pointer;color:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+.top{background:var(--ink);color:#fff;font-size:12px;text-align:center;padding:9px 16px;letter-spacing:.03em}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+.hd{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:8px}
+.ib{width:44px;height:44px;border:0;background:none;border-radius:50%;position:relative;display:grid;place-items:center}
+.ib:hover{background:#0000000a}
+.logo{font:800 26px var(--f);display:flex;align-items:center;gap:1px}
+.dn{display:none;gap:28px;font-weight:600;font-size:15px}.dn button{border:0;background:none;padding:8px 0}.dn button:hover{color:var(--a)}
+.bdg{position:absolute;top:4px;right:2px;min-width:18px;height:18px;border-radius:9px;background:var(--a);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.sr{display:flex;align-items:center;gap:10px;margin:4px 0 12px;background:#F1ECEF;border-radius:999px;padding:0 16px;height:48px}
+.sr input{flex:1;border:0;background:none;outline:0;height:100%;font-size:15px}
+.hero{display:flex;flex-direction:column;gap:18px;padding:20px 0 8px}
+.hero small{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--a)}
+.hero h1{margin:0;font:800 clamp(44px,9vw,92px)/.95 var(--f);letter-spacing:-.03em}
+.hero p{margin:0;color:var(--mut);max-width:440px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:15px}
+.btn:hover{background:var(--a)}.btn.o{background:none;color:var(--ink);border:1.5px solid var(--ink)}.btn.o:hover{background:var(--ink);color:#fff}.btn.w{width:100%}.btn.r{background:#E5484D}
+.sec{padding:36px 0 0}.sec h2{margin:0 0 16px;font:800 30px var(--f);letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 12px}
+.card{position:relative}.card .im{display:block;width:100%;aspect-ratio:3/4;border:0;border-radius:16px;padding:0;overflow:hidden;background:var(--t)}
+.im img{width:100%;height:100%;object-fit:cover}
+.ph{width:100%;height:100%;display:grid;place-items:center;color:#0000004d}
+.card h3{margin:10px 2px 0;font-size:14px;font-weight:600}.card .pr{margin:0 2px;font-size:14px;color:var(--mut);font-weight:700}
+.hrt{position:absolute;top:4px;right:4px;width:44px;height:44px;border:0;background:none;display:grid;place-items:center;z-index:2}
+.hrt span{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.tag{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;z-index:2}
+.emp{grid-column:1/-1;text-align:center;color:var(--mut);padding:40px 0}
+.steps{display:grid;gap:12px}.st{display:flex;gap:16px;align-items:center;border:1px solid var(--ln);border-radius:20px;padding:20px}
+.st b{font:800 36px var(--f);color:var(--a);line-height:1}.st div{font-size:14px;color:var(--mut)}.st strong{display:block;color:var(--ink);font-size:16px}
+footer{margin-top:48px;background:#F3EEEA;padding:32px 0 24px;font-size:14px}
+footer .wrap{display:grid;gap:8px}footer a{display:flex;align-items:center;min-height:44px;border-top:1px solid #DDD5CF;font-weight:600}
+.bn{position:fixed;bottom:0;left:0;right:0;z-index:20;background:#fff;border-top:1px solid var(--ln);display:grid;grid-template-columns:repeat(4,1fr);padding:6px 8px 10px}
+.bn button{border:0;background:none;display:flex;flex-direction:column;align-items:center;min-height:48px;font-size:11px;font-weight:600;gap:2px;justify-content:center}
+.ov{position:fixed;inset:0;z-index:50;background:#141214a6;display:flex;align-items:flex-end;justify-content:center}
+.md{position:relative;background:#fff;width:100%;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:28px 20px 24px;animation:up .22s ease}
+@keyframes up{from{transform:translateY(30px);opacity:0}}
+.md h2{margin:0 36px 14px 0;font:800 26px var(--f);letter-spacing:-.02em}.md .x{position:absolute;top:8px;right:8px}
+.md .sub{color:var(--mut);font-size:14px;margin:-8px 0 14px}
+.dr{position:fixed;top:0;bottom:0;left:0;width:300px;max-width:85vw;background:#fff;z-index:60;padding:20px;animation:sl .2s ease}@keyframes sl{from{transform:translateX(-100%)}}
+.dr button.li{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;border:0;background:none;text-align:left;font-weight:600;font-size:16px;border-bottom:1px solid var(--ln)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px}.cg button{min-height:110px;border:1px solid #E9D5DC;background:#F8EDF1;border-radius:18px;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--a);padding:12px}
+label{display:block;font-size:12px;font-weight:700;margin:12px 0 4px}
+input,select{width:100%;height:48px;border:1px solid #CFC8C2;border-radius:12px;padding:0 14px;background:#fff;font-size:16px}input:disabled{background:#F1ECEF;color:#777}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.r3{display:grid;grid-template-columns:2fr 2fr 1fr;gap:10px}
+.fs{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a);border-bottom:1px solid var(--ln);padding:18px 0 6px;margin-top:6px}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+.err{color:#C0262B;font-size:13px;margin:10px 0 0;min-height:18px}.lk{color:var(--a);font-weight:700;border:0;background:none;padding:0}
+.pb{aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:var(--t);margin-bottom:14px}
+.sz{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px}.sz button{min-width:48px;height:44px;border:1.5px solid #CFC8C2;border-radius:12px;background:#fff;font-weight:700}.sz button.on{border-color:var(--a);background:#FBE9EF;color:var(--a)}
+.ok{display:inline-block;background:#E6F4EA;color:#1E7A3C;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.row{display:flex;gap:10px}.row .btn{flex:1}.row .hb{width:52px;flex:none;height:52px;border:1.5px solid var(--ln);border-radius:50%;background:#fff;display:grid;place-items:center}
+.ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--ln)}.ci .t{width:64px;height:80px;border-radius:12px;background:var(--t);flex:none;overflow:hidden}.ci .in{flex:1;min-width:0}
+.ci h4{margin:0;font-size:14px}.ci .ct{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}.ci select{height:40px;width:76px;font-size:14px;padding:0 8px}
+.qt{display:flex;align-items:center;border:1px solid #CFC8C2;border-radius:999px}.qt button{width:38px;height:38px;border:0;background:none;font-size:18px;font-weight:700}.qt span{min-width:20px;text-align:center;font-weight:700}
+.tt{display:flex;justify-content:space-between;padding:6px 0;font-size:15px}.tt.b{font-weight:800;font-size:19px;color:var(--a)}
+.pk{background:#F8EDF1;border-radius:16px;padding:14px 16px;font-size:14px;margin:12px 0}
+.ctr{text-align:center}.chk{width:72px;height:72px;border-radius:50%;background:#E6F4EA;display:grid;place-items:center;margin:0 auto 12px}
+.wa{background:#1FA855}.wa:hover{background:#17893f}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;z-index:90;opacity:0;transition:.25s;pointer-events:none;max-width:90vw;text-align:center}#toast.on{opacity:1}
+@media(min-width:768px){
+body{padding-bottom:0}.bn{display:none}.dn{display:flex}.ib.dn{display:grid}.grid{grid-template-columns:repeat(4,1fr);gap:28px 20px}.wrap{padding:0 40px}.hero{padding:56px 0 16px}.steps{grid-template-columns:repeat(3,1fr)}
+.ov{align-items:center}.md{width:540px;border-radius:24px;padding:32px}footer .wrap{grid-template-columns:repeat(4,1fr);gap:24px}footer a{border:0;min-height:32px}.hb2{display:none}#toast{bottom:32px}}
+</style>
 </head>
 <body>
+<div class="top">Compre online e retire na loja — sem frete</div>
+<header><div class="wrap">
+<div class="hd">
+<button class="ib" data-a="drawer" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+<a href="#" class="logo" aria-label="LÉLA MODAS">LÉ<svg width="18" height="18" viewBox="0 0 24 24" fill="#C8265F"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg>LA</a>
+<nav class="dn"><button data-a="cats">Categorias</button><button data-a="top">Mais bem avaliados</button><button data-a="favs">Favoritos</button></nav>
+<div style="display:flex">
+<button class="ib dn" data-a="acct" aria-label="Minha conta"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></button>
+<button class="ib" data-a="cart" aria-label="Sacola"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="bdg" id="cc" hidden>0</span></button>
+</div></div>
+<label class="sr" style="margin:4px 0 12px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span style="position:absolute;left:-9999px">Buscar</span><input id="q" type="search" placeholder="Peça a LÉLA MODAS" autocomplete="off"></label>
+</div></header>
 
-  <!-- Top Logo Minimalista -->
-  <div class="top-brand">
-    <span>L ♡<i class="ph ph-heart-fill"></i>M</span>
-  </div>
+<main class="wrap">
+<section class="hero"><small>Coleção Primavera</small><h1>Seu estilo.<br>Seu jeito.<br>Sua moda.</h1><p>Escolha pelo site, finalize pelo WhatsApp e retire na loja quando quiser.</p><div><button class="btn" data-a="go">Ver novidades</button></div></section>
+<section class="sec" id="loja"><h2 id="gt">Novidades</h2><div class="grid" id="grid"></div></section>
+<section class="sec"><h2>Como funciona a retirada</h2><div class="steps">
+<div class="st"><b>01</b><div><strong>Escolha suas peças</strong>Adicione à sacola.</div></div>
+<div class="st"><b>02</b><div><strong>Finalize o pedido</strong>Confirme e siga para o WhatsApp.</div></div>
+<div class="st"><b>03</b><div><strong>Retire na loja</strong>Passe na LÉLA MODAS e leve seu pedido.</div></div></div></section>
+</main>
+<footer><div class="wrap"><div style="font:800 22px var(--f)">LÉLA MODAS</div><a href="tel:+5521988933460">Ajuda · (21) 98893-3460</a><a href="#">Cuidado com os produtos</a><a href="#">A arte de presentear</a><div style="font-size:12px;color:#6B666C;padding-top:8px">© LÉLA MODAS. Todos os direitos reservados.</div></div></footer>
+<nav class="bn"><button data-a="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/></svg>Início</button><button data-a="cats"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Categorias</button><button data-a="favs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>Favoritos</button><button data-a="acct"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Conta</button></nav>
+<div id="root"></div><div id="toast" role="status"></div>
 
-  <!-- Barra de Promoção -->
-  <div class="promo-bar">
-    SEU ESTILO, SEU JEITO, SUA MODA
-  </div>
-
-  <!-- Header / Navbar Principal -->
-  <header class="main-header">
-    <button class="icon-btn" id="btn-hamburger" aria-label="Abrir Menu">
-      <i class="ph ph-list"></i>
-    </button>
-    <button class="icon-btn" id="btn-profile" aria-label="Perfil">
-      <i class="ph ph-user"></i>
-    </button>
-    <div class="brand-title">LÉ♡LA MODAS</div>
-    <button class="icon-btn" id="btn-favorites" aria-label="Favoritos">
-      <i class="ph ph-star-fill active-star"></i>
-    </button>
-    <button class="icon-btn" id="btn-cart" aria-label="Carrinho">
-      <i class="ph ph-shopping-bag"></i>
-    </button>
-  </header>
-
-  <!-- Barra de Busca Instantânea -->
-  <div class="search-container">
-    <div class="search-box">
-      <i class="ph ph-list menu-sub-icon"></i>
-      <input type="text" placeholder="Peça a LÉLA MODAS" id="search-input" />
-      <i class="ph ph-magnifying-glass search-icon"></i>
-    </div>
-  </div>
-
-  <!-- Main Content: Grid de Produtos -->
-  <main class="container">
-    <div class="products-grid" id="products-container">
-      <!-- Injetado dinamicamente via JavaScript -->
-    </div>
-  </main>
-
-  <!-- Rodapé (Footer) -->
-  <footer class="main-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>AJUDA</h4>
-        <ul>
-          <li><a href="#">Ligue para (21)98893-3460</a></li>
-          <li><a href="#">Cuidado com os Produtos</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>NEWSLETTER</h4>
-        <ul>
-          <li><a href="#">Novas coleções de PRIMAVERA</a></li>
-          <li><a href="#">Novos kits de FIM DE ANO</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>SERVIÇOS</h4>
-        <ul>
-          <li><a href="#">A arte de presentear</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>SOBRE A LÉLA MODAS</h4>
-        <ul>
-          <li><a href="#">Sustentabilidade</a></li>
-          <li><a href="#">Últimas Notícias</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>LOJAS</h4>
-        <ul>
-          <li>Siga a LÉLA MODAS nas redes sociais</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Redes Sociais -->
-    <div class="social-links">
-      <a href="#"><i class="ph ph-x-logo"></i></a>
-      <a href="#"><i class="ph ph-instagram-logo"></i></a>
-      <a href="#"><i class="ph ph-youtube-logo"></i></a>
-    </div>
-  </footer>
-
-  <!-- ==================== MODAIS E GAVETAS ==================== -->
-
-  <!-- Overlay de Fundo -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- Drawer (Menu Lateral Hamburguer) -->
-  <aside class="drawer" id="drawer-menu">
-    <div class="drawer-header">
-      <h2>Menu</h2>
-      <button class="close-btn" id="close-drawer">&times;</button>
-    </div>
-    <nav class="drawer-nav">
-      <ul>
-        <li><a href="#" class="nav-item" id="menu-categories"><i class="ph ph-squares-four"></i> Categorias</a></li>
-        <li><a href="#" class="nav-item" id="menu-top-rated"><i class="ph ph-star"></i> Mais Bem Avaliados</a></li>
-        <li><a href="#" class="nav-item" id="menu-favorites"><i class="ph ph-heart"></i> Meus Favoritos</a></li>
-        <li><a href="#" class="nav-item" id="menu-profile"><i class="ph ph-user-circle"></i> Minha Conta / Perfil</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- Modal Genérico -->
-  <div class="modal" id="app-modal">
-    <div class="modal-content">
-      <button class="close-btn" id="close-modal">&times;</button>
-      <div id="modal-body">
-        <!-- Conteúdo dinâmico injetado via JS -->
-      </div>
-    </div>
-  </div>
-
-  <script src="storage.js"></script>
-  <script src="script.js"></script>
+<script>
+// ===== CONFIGURAÇÃO (edite aqui) =====
+const WA = '5521999293091'; // WhatsApp que recebe os pedidos (DDI+DDD+número)
+const CATS = ['Vestidos & Conjuntos','Blusas & Camisetas','Calças & Jeans','Calçados & Acessórios'];
+const SIZES = ['P','M','G','GG'];
+// img: coloque o caminho da foto (ex: 'img/vestido.jpg'). top:1 = aparece em "Mais bem avaliados". stock = unidades.
+const PRODUCTS = [
+ {id:1,n:'Vestido Midi Floral',c:0,p:189,top:1,stock:12,img:''},
+ {id:2,n:'Blusa Crepe Manga Longa',c:1,p:99,top:1,stock:12,img:''},
+ {id:3,n:'Conjunto Alfaiataria',c:0,p:259,top:1,stock:12,img:''},
+ {id:4,n:'Saia Plissada Elegance',c:2,p:129,top:1,stock:12,img:''},
+ {id:5,n:'Vestido Longo Cetim',c:0,p:299,top:1,stock:12,img:''},
+ {id:6,n:'Macacão Pantalona',c:0,p:229,top:1,stock:12,img:''},
+ {id:7,n:'Top Cropped Tricot',c:1,p:79,top:1,stock:12,img:''},
+ {id:8,n:'Jaqueta Jeans Oversized',c:1,p:219,top:1,stock:12,img:''},
+ {id:9,n:'Camisa Algodão Premium',c:1,p:149,top:1,stock:12,img:''},
+ {id:10,n:'Calça Pantalona Linho',c:2,p:179,top:1,stock:12,img:''},
+ {id:11,n:'Shorts Alfaiataria Cinto',c:2,p:119,top:1,stock:12,img:''},
+ {id:12,n:'Tênis Casual Feminino',c:3,p:199,top:1,stock:12,img:''},
+ {id:13,n:'Vestido Tubinho Canelado',c:0,p:139,top:0,stock:12,img:''},
+ {id:14,n:'Body Manga Longa',c:1,p:89,top:0,stock:12,img:''},
+ {id:15,n:'Regata Ribana',c:1,p:59,top:0,stock:12,img:''},
+ {id:16,n:'Blusa Cetim Gola Laço',c:1,p:129,top:0,stock:12,img:''}
+];
+// ===== utilidades =====
+const $=s=>document.querySelector(s), root=$('#root');
+const ls=(k,d)=>{try{return JSON.parse(localStorage.getItem('lm_'+k))??d}catch{return d}};
+const sv=(k,v)=>{try{localStorage.setItem('lm_'+k,JSON.stringify(v))}catch{}};
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dig=s=>String(s||'').replace(/\D/g,'');
+const TINT=['#EFE3E7','#E4EBE1','#EFE6D8','#DEE5F0'];
+const prod=id=>PRODUCTS.find(p=>p.id==id);
+let favs=ls('favs',[]), cart=ls('cart',[]), users=ls('users',{}), sess=ls('sess',null), q='', cat=-1, cur=null, after=null;
+const me=()=>sess&&users[sess];
+const tint=p=>`--t:${TINT[p.c%4]}`;
+const pic=p=>p.img?`<img src="${esc(p.img)}" alt="${esc(p.n)}" loading="lazy">`:`<div class="ph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l9 7-2 1v9H5v-9l-2-1 9-7z" opacity=".0"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg></div>`;
+const heart=on=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="${on?'#C8265F':'none'}" stroke="${on?'#C8265F':'#141214'}" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>`;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2600)}
+const cardHTML=p=>`<div class="card">${p.top?'<span class="tag">★ Destaque</span>':''}<button class="hrt" data-a="fav" data-id="${p.id}" aria-label="Favoritar"><span>${heart(favs.includes(p.id))}</span></button><button class="im" style="${tint(p)}" data-a="prod" data-id="${p.id}" aria-label="${esc(p.n)}">${pic(p)}</button><h3>${esc(p.n)}</h3><p class="pr">${brl(p.p)}</p></div>`;
+const gridHTML=l=>l.length?l.map(cardHTML).join(''):'<p class="emp">Nenhum produto encontrado.</p>';
+function renderGrid(){
+ const l=PRODUCTS.filter(p=>(cat<0||p.c===cat)&&(!q||p.n.toLowerCase().includes(q.toLowerCase())));
+ $('#gt').textContent=q?`Resultados para “${q}”`:cat>=0?CATS[cat]:'Novidades';
+ $('#grid').innerHTML=gridHTML(l);
+ const n=cart.reduce((a,i)=>a+i.q,0), b=$('#cc');b.textContent=n;b.hidden=!n;
+}
+// ===== modal =====
+function open(fn){cur=fn;root.innerHTML=`<div class="ov" data-a="bg"><div class="md" role="dialog" aria-modal="true"><button class="ib x" data-a="close" aria-label="Fechar">✕</button>${fn()}</div></div>`;const f=root.querySelector('input:not([disabled])');}
+function close(){root.innerHTML='';cur=null}
+function refresh(){renderGrid();if(cur){const sc=root.querySelector('.md')?.scrollTop;open(cur);const m=root.querySelector('.md');if(m&&sc)m.scrollTop=sc}}
+// ===== views =====
+const vCats=()=>`<h2>Categorias</h2><div class="cg">${CATS.map((c,i)=>`<button data-a="cat" data-i="${i}">${c}</button>`).join('')}</div><p style="text-align:center;margin:16px 0 0"><button class="lk" data-a="catall">Ver todos os produtos</button></p>`;
+const vCat=i=>()=>{const l=PRODUCTS.filter(p=>p.c===i);return `<button class="lk" data-a="cats">← Voltar para Categorias</button><h2 style="margin-top:10px">${CATS[i]}</h2><p class="sub">${l.length} produto(s) encontrado(s)</p><div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`};
+const vTop=()=>{const l=PRODUCTS.filter(p=>p.top);return `<h2>Mais Bem Avaliados ★ (${l.length})</h2><p class="sub">Peças marcadas com o selo de destaque da LÉLA MODAS.</p><div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`};
+const vFavs=()=>{const l=favs.map(prod).filter(Boolean);return `<h2>Meus Favoritos ♥ ${l.length?`(${l.length})`:''}</h2>`+(l.length?`<div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`:`<div class="ctr" style="padding:16px 0"><p style="margin:0">Sua lista de favoritos está vazia.</p><p class="sub">Marque os produtos que mais gostar!</p><button class="btn w" data-a="go">Ver produtos</button></div>`)};
+let sel={id:0,size:'P'};
+const vProd=id=>()=>{const p=prod(id);return `<div class="pb" style="${tint(p)}">${pic(p)}</div><small style="font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a)">${CATS[p.c]}</small><h2 style="margin:4px 0 2px">${esc(p.n)}</h2><p style="margin:0 0 8px;font:800 24px var(--f);color:var(--a)">${brl(p.p)}</p><span class="ok">${p.stock} unidades disponíveis</span><label style="margin-top:16px">Selecione o tamanho</label><div class="sz">${SIZES.map(s=>`<button data-a="size" data-s="${s}" class="${sel.size===s?'on':''}">${s}</button>`).join('')}</div><div class="row"><button class="btn" data-a="add" data-id="${id}">Adicionar à sacola</button><button class="hb" data-a="fav" data-id="${id}" aria-label="Favoritar">${heart(favs.includes(id))}</button></div>`};
+const sub=()=>cart.reduce((a,i)=>a+prod(i.id).p*i.q,0);
+const vCart=()=>{
+ if(!cart.length)return `<h2>Minha Sacola</h2><div class="ctr" style="padding:16px 0"><p>Sua sacola está vazia.</p><button class="btn w" data-a="go">Ver produtos</button></div>`;
+ return `<h2>Minha Sacola</h2>`+cart.map((it,k)=>{const p=prod(it.id);return `<div class="ci"><div class="t" style="${tint(p)}">${pic(p)}</div><div class="in"><h4>${esc(p.n)}</h4><div style="font-weight:700;color:var(--a);font-size:14px">${brl(p.p)}</div><div class="ct"><select data-a="csize" data-k="${k}" aria-label="Tamanho">${SIZES.map(s=>`<option ${s===it.size?'selected':''}>${s}</option>`).join('')}</select><div class="qt"><button data-a="dec" data-k="${k}" aria-label="Diminuir">−</button><span>${it.q}</span><button data-a="inc" data-k="${k}" aria-label="Aumentar">+</button></div><button class="lk" style="color:#C0262B;font-size:13px" data-a="rm" data-k="${k}">Remover</button></div></div></div>`}).join('')+
+ `<div style="padding-top:12px"><div class="tt"><span>Subtotal</span><span>${brl(sub())}</span></div><div class="tt"><span>Retirada na loja</span><span style="color:#1E7A3C;font-weight:700">GRÁTIS</span></div><div class="tt b"><span>Total</span><span>${brl(sub())}</span></div></div><button class="btn w" style="margin-top:12px" data-a="checkout">Finalizar pedido</button><p style="text-align:center;margin:12px 0 0"><button class="lk" data-a="close">Continuar comprando</button></p>`};
+const vConfirm=()=>{const u=me();return `<h2>Revisar pedido</h2>`+cart.map(i=>{const p=prod(i.id);return `<div class="tt"><span>${i.q}x ${esc(p.n)} <small style="color:var(--mut)">(Tam: ${i.size})</small></span><span>${brl(p.p*i.q)}</span></div>`}).join('')+`<div class="tt b"><span>Total</span><span>${brl(sub())}</span></div><div class="pk"><b>Retirada na loja</b><br>Seu pedido fica separado e embalado. A forma de pagamento é combinada pelo WhatsApp.</div><div style="font-size:14px;color:var(--mut)">Pedido em nome de <b style="color:var(--ink)">${esc(u.nome)}</b> · ${esc(u.tel)}</div><button class="btn w" style="margin-top:16px" data-a="confirm">Confirmar pedido</button><p style="text-align:center;margin:12px 0 0"><button class="lk" data-a="cart">← Voltar à sacola</button></p>`};
+const msg=(u,items,total)=>{const ad=u.rua?`\n📍 *ENDEREÇO DO CLIENTE:* ${u.rua}, Nº ${u.num} Bairro: ${u.bairro} ${u.cidade} - ${u.uf} CEP: ${u.cep}`:'';
+ return `🛍️ *NOVO PEDIDO - LÉLA MODAS*\n\n👤 *Cliente:* ${u.nome}\n📱 *Contato:* ${u.tel}\n📧 *E-mail:* ${u.email}${ad}\n\n🧾 *ITENS DO PEDIDO:*\n${items.map(i=>`• ${i.q}x ${prod(i.id).n} (Tam: ${i.size}) - ${brl(prod(i.id).p)}`).join('\n')}\n\n💰 *TOTAL DO PEDIDO:* ${brl(total)}\n🏬 *RETIRADA NA LOJA*\n\nGostaria de confirmar a forma de pagamento!`};
+let lastLink='';
+const vDone=()=>`<div class="ctr"><div class="chk"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E7A3C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h2 style="margin:0 0 8px">Parabéns, seu pedido foi concluído!</h2><p style="color:var(--mut);margin:0 0 20px">Agora é só seguir para o WhatsApp para combinar o pagamento e acompanhar o status do seu pedido. A retirada é feita na loja.</p><a class="btn wa w" href="${lastLink}" target="_blank" rel="noopener">Continuar pelo WhatsApp</a><p style="margin:14px 0 0"><button class="lk" data-a="close">Voltar à loja</button></p></div>`;
+const fld=(l,n,v='',x='')=>`<div><label for="f_${n}">${l}</label><input id="f_${n}" name="${n}" value="${esc(v)}" ${x}></div>`;
+const vForm=(u,edit)=>{u=u||{};return `<h2>${edit?'Editar meu perfil':'Criar conta'}</h2><form data-f="${edit?'prof':'reg'}" novalidate>
+<div class="fs">Dados pessoais</div>${fld('Nome completo *','nome',u.nome,'autocomplete="name" placeholder="Ex: Maria Silva"')}
+<div class="r2">${fld('E-mail *','email',u.email,`type="email" autocomplete="email" placeholder="seu@email.com" ${edit?'disabled':''}`)}${fld('CPF *','cpf',u.cpf,'inputmode="numeric" placeholder="000.000.000-00"')}</div>
+<div class="r2">${fld('Nascimento *','nasc',u.nasc,`type="date" max="${new Date().toISOString().slice(0,10)}"`)}<div><label for="f_gen">Gênero</label><select id="f_gen" name="gen">${['','Feminino','Masculino','Outro','Prefiro não informar'].map(g=>`<option value="${g}" ${g===u.gen?'selected':''}>${g||'Selecione...'}</option>`).join('')}</select></div></div>
+${fld('Telefone / WhatsApp *','tel',u.tel,'type="tel" inputmode="tel" placeholder="(21) 99999-9999"')}
+<details ${u.rua?'open':''}><summary class="fs" style="margin-top:14px">Endereço (opcional)</summary><div class="r2">${fld('CEP','cep',u.cep,'inputmode="numeric" placeholder="00000-000"')}${fld('Número','num',u.num)}</div>${fld('Rua','rua',u.rua)}<div class="r3">${fld('Bairro','bairro',u.bairro)}${fld('Cidade','cidade',u.cidade)}${fld('UF','uf',u.uf,'maxlength="2"')}</div></details>
+<div class="fs">${edit?'Alterar senha (opcional)':'Acesso e segurança'}</div><div class="r2">${fld(edit?'Nova senha':'Senha *','pw','','type="password" autocomplete="new-password" placeholder="Mínimo 6 dígitos"')}${fld('Confirmar senha','pw2','','type="password" autocomplete="new-password"')}</div>
+<p class="err" role="alert"></p><button class="btn w">${edit?'Salvar alterações':'Finalizar cadastro'}</button></form>`+(edit?`<button class="btn r w" style="margin-top:10px" data-a="logout">Sair da conta</button>`:`<p style="text-align:center;margin:14px 0 0;font-size:14px">Já tem uma conta? <button class="lk" data-a="login">Faça login</button></p>`)};
+const vLogin=()=>`<h2>Entrar na conta</h2><form data-f="login" novalidate>${fld('E-mail','email','','type="email" autocomplete="email" placeholder="seu@email.com"')}${fld('Senha','pw','','type="password" autocomplete="current-password"')}<p class="err" role="alert"></p><button class="btn w">Entrar</button></form><p style="text-align:center;margin:14px 0 0;font-size:14px">Ainda não tem conta? <button class="lk" data-a="reg">Cadastre-se aqui</button></p>`;
+const vMenu=()=>`<div class="dr"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><b style="font:800 24px var(--f)">Menu</b><button class="ib" data-a="close" aria-label="Fechar">✕</button></div>${[['cats','Categorias'],['top','Mais bem avaliados'],['favs','Meus favoritos'],['acct','Minha conta / Perfil']].map(([a,t])=>`<button class="li" data-a="${a}">${t}</button>`).join('')}</div>`;
+// ===== validação =====
+function cpfOk(c){c=dig(c);if(c.length!==11||/^(\d)\1+$/.test(c))return false;for(let t=9;t<11;t++){let s=0;for(let i=0;i<t;i++)s+=c[i]*(t+1-i);if((s*10%11)%10!=c[t])return false}return true}
+async function hash(e,p){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('lm:'+e+':'+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch{return 'p:'+btoa(unescape(encodeURIComponent(p)))}}
+const mask={cpf:v=>dig(v).slice(0,11).replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'),
+ tel:v=>{v=dig(v).slice(0,11);return v.length>6?`(${v.slice(0,2)}) ${v.slice(2,v.length>10?7:6)}-${v.slice(v.length>10?7:6)}`:v.length>2?`(${v.slice(0,2)}) ${v.slice(2)}`:v},
+ cep:v=>dig(v).slice(0,8).replace(/(\d{5})(\d)/,'$1-$2')};
+// ===== formulários =====
+const F={
+ async login(f){const e=f.email.value.trim().toLowerCase(),u=users[e];
+  if(!u||u.h!==await hash(e,f.pw.value))return'E-mail ou senha incorretos.';
+  sess=e;sv('sess',e);toast(`Bem-vinda, ${u.nome.split(' ')[0]}!`);afterAuth()},
+ async reg(f){const d=read(f),e=d.email.toLowerCase();let m=check(d);if(m)return m;
+  if(users[e])return'Este e-mail já está cadastrado. Faça login.';
+  if(d.pw.length<6)return'A senha precisa ter no mínimo 6 dígitos.';if(d.pw!==d.pw2)return'As senhas não conferem.';
+  d.email=e;d.h=await hash(e,d.pw);delete d.pw;delete d.pw2;users[e]=d;sv('users',users);sess=e;sv('sess',e);toast('Cadastro concluído!');afterAuth()},
+ async prof(f){const u=me(),d=read(f);d.email=u.email;let m=check(d);if(m)return m;
+  if(d.pw){if(d.pw.length<6)return'A nova senha precisa ter no mínimo 6 dígitos.';if(d.pw!==d.pw2)return'As senhas não conferem.';d.h=await hash(u.email,d.pw)}else d.h=u.h;
+  delete d.pw;delete d.pw2;users[u.email]=d;sv('users',users);toast('Dados atualizados!');close()}};
+const read=f=>Object.fromEntries([...new FormData(f)].map(([k,v])=>[k,String(v).trim()]));
+function check(d){if(d.nome.length<3)return'Informe seu nome completo.';if(!/^\S+@\S+\.\S+$/.test(d.email))return'E-mail inválido.';
+ if(!cpfOk(d.cpf))return'CPF inválido.';if(!d.nasc)return'Informe a data de nascimento.';if(dig(d.tel).length<10)return'Telefone inválido.';
+ if(d.rua&&(!d.num||!d.bairro||!d.cidade||!d.uf))return'Complete o endereço ou deixe-o em branco.'}
+function afterAuth(){if(after==='co'){after=null;open(vConfirm)}else close()}
+// ===== ações =====
+const go=()=>{close();cat=-1;q='';$('#q').value='';renderGrid();$('#loja').scrollIntoView({behavior:'smooth'})};
+const A={
+ close,bg:(d,e)=>{if(e.target.classList.contains('ov'))close()},go,home:()=>{close();scrollTo({top:0,behavior:'smooth'})},
+ drawer:()=>{root.innerHTML=`<div class="ov" data-a="bg" style="align-items:stretch;justify-content:flex-start">${vMenu()}</div>`;cur=null},
+ cats:()=>open(vCats),top:()=>open(vTop),favs:()=>open(vFavs),cart:()=>open(vCart),
+ cat:d=>open(vCat(+d.i)),catall:go,
+ acct:()=>{after=null;open(me()?()=>vForm(me(),true):vLogin)},login:()=>open(vLogin),reg:()=>open(()=>vForm(null,false)),
+ logout:()=>{sess=null;sv('sess',null);close();toast('Você saiu da conta.')},
+ prod:d=>{sel={id:+d.id,size:'P'};open(vProd(+d.id))},size:d=>{sel.size=d.s;open(cur)},
+ fav:d=>{const id=+d.id;favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];sv('favs',favs);toast(favs.includes(id)?'Adicionado aos favoritos':'Removido dos favoritos');refresh()},
+ add:d=>{const id=+d.id,i=cart.find(x=>x.id===id&&x.size===sel.size);i?i.q++:cart.push({id,size:sel.size,q:1});sv('cart',cart);renderGrid();toast('Adicionado à sacola');open(vCart)},
+ inc:d=>{const i=cart[+d.k];if(i.q<prod(i.id).stock)i.q++;else toast('Limite de estoque atingido');sv('cart',cart);refresh()},
+ dec:d=>{const i=cart[+d.k];if(i.q>1)i.q--;sv('cart',cart);refresh()},
+ rm:d=>{cart.splice(+d.k,1);sv('cart',cart);refresh()},
+ checkout:()=>{if(!me()){after='co';toast('Entre ou cadastre-se para finalizar');open(vLogin)}else open(vConfirm)},
+ confirm:()=>{const u=me(),total=sub();lastLink=`https://wa.me/${WA}?text=${encodeURIComponent(msg(u,cart,total))}`;cart=[];sv('cart',cart);renderGrid();open(vDone)}
+};
+const C={csize:(el)=>{const it=cart[+el.dataset.k];it.size=el.value;const j=cart.findIndex((x,i)=>i!==+el.dataset.k&&x.id===it.id&&x.size===it.size);if(j>=0){cart[j].q+=it.q;cart.splice(+el.dataset.k,1)}sv('cart',cart);toast('Tamanho atualizado');refresh()}};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b.dataset,e)});
+document.addEventListener('change',e=>{const a=e.target.dataset.a;if(a&&C[a])C[a](e.target)});
+document.addEventListener('submit',async e=>{const f=e.target,n=f.dataset.f;if(!n)return;e.preventDefault();const b=f.querySelector('button');b.disabled=true;const m=await F[n](f);b.disabled=false;const p=f.querySelector('.err');if(m&&p)p.textContent=m});
+document.addEventListener('input',async e=>{const t=e.target,n=t.name;if(mask[n])t.value=mask[n](t.value);
+ if(n==='cep'&&dig(t.value).length===8){try{const r=await(await fetch(`https://viacep.com.br/ws/${dig(t.value)}/json/`)).json();if(!r.erro){const f=t.form;f.rua.value=r.logradouro||'';f.bairro.value=r.bairro||'';f.cidade.value=r.localidade||'';f.uf.value=r.uf||'';f.num.focus()}}catch{}}
+ if(t.id==='q'){q=t.value.trim();cat=-1;renderGrid()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+renderGrid();
+</script>
 </body>
 </html>
