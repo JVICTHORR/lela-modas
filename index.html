@@ -59,6 +59,12 @@ input,select{width:100%;height:48px;border:1px solid #CFC8C2;border-radius:12px;
 .fs{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a);border-bottom:1px solid var(--ln);padding:18px 0 6px;margin-top:6px}
 details summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
 .err{color:#C0262B;font-size:13px;margin:10px 0 0;min-height:18px}.lk{color:var(--a);font-weight:700;border:0;background:none;padding:0}
+.gal{position:relative;margin-bottom:14px}.gs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:18px;scrollbar-width:none}.gs::-webkit-scrollbar{display:none}
+.gs img{flex:0 0 100%;width:100%;scroll-snap-align:center;aspect-ratio:4/5;max-height:62vh;object-fit:cover;background:var(--t)}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}.dots i{width:7px;height:7px;border-radius:4px;background:#D5CFD0;transition:.2s}.dots i.on{background:var(--a);width:20px}
+.gn{position:absolute;top:40%;width:40px;height:40px;border-radius:50%;border:0;background:#ffffffe6;font-size:24px;line-height:1;box-shadow:0 2px 8px #0003}
+.card h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sw{display:flex;margin:2px -8px 0}.sw button{width:44px;height:44px;border:0;background:none;display:grid;place-items:center;padding:0}.sw span{width:22px;height:22px;border-radius:50%;border:1.5px solid #CFC8C2;transition:.15s}.sw span.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--a)}.card .sw{margin:-6px 0 -10px -8px}
 .pb{aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:var(--t);margin-bottom:14px}
 .sz{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px}.sz button{min-width:48px;height:44px;border:1.5px solid #CFC8C2;border-radius:12px;background:#fff;font-weight:700}.sz button.on{border-color:var(--a);background:#FBE9EF;color:var(--a)}
 .ok{display:inline-block;background:#E6F4EA;color:#1E7A3C;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
@@ -102,30 +108,14 @@ body{padding-bottom:0}.bn{display:none}.dn{display:flex}.ib.dn{display:grid}.gri
 <nav class="bn"><button data-a="home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/></svg>Início</button><button data-a="cats"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Categorias</button><button data-a="favs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>Favoritos</button><button data-a="acct"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Conta</button></nav>
 <div id="root"></div><div id="toast" role="status"></div>
 
+<script src="produtos.js"></script>
 <script>
 // ===== CONFIGURAÇÃO (edite aqui) =====
 const WA = '5521999293091'; // WhatsApp que recebe os pedidos (DDI+DDD+número)
 const CATS = ['Vestidos & Conjuntos','Blusas & Camisetas','Calças & Jeans','Calçados & Acessórios'];
 const SIZES = ['P','M','G','GG'];
-// img: coloque o caminho da foto (ex: 'img/vestido.jpg'). top:1 = aparece em "Mais bem avaliados". stock = unidades.
-const PRODUCTS = [
- {id:1,n:'Vestido Midi Floral',c:0,p:189,top:1,stock:12,img:''},
- {id:2,n:'Blusa Crepe Manga Longa',c:1,p:99,top:1,stock:12,img:''},
- {id:3,n:'Conjunto Alfaiataria',c:0,p:259,top:1,stock:12,img:''},
- {id:4,n:'Saia Plissada Elegance',c:2,p:129,top:1,stock:12,img:''},
- {id:5,n:'Vestido Longo Cetim',c:0,p:299,top:1,stock:12,img:''},
- {id:6,n:'Macacão Pantalona',c:0,p:229,top:1,stock:12,img:''},
- {id:7,n:'Top Cropped Tricot',c:1,p:79,top:1,stock:12,img:''},
- {id:8,n:'Jaqueta Jeans Oversized',c:1,p:219,top:1,stock:12,img:''},
- {id:9,n:'Camisa Algodão Premium',c:1,p:149,top:1,stock:12,img:''},
- {id:10,n:'Calça Pantalona Linho',c:2,p:179,top:1,stock:12,img:''},
- {id:11,n:'Shorts Alfaiataria Cinto',c:2,p:119,top:1,stock:12,img:''},
- {id:12,n:'Tênis Casual Feminino',c:3,p:199,top:1,stock:12,img:''},
- {id:13,n:'Vestido Tubinho Canelado',c:0,p:139,top:0,stock:12,img:''},
- {id:14,n:'Body Manga Longa',c:1,p:89,top:0,stock:12,img:''},
- {id:15,n:'Regata Ribana',c:1,p:59,top:0,stock:12,img:''},
- {id:16,n:'Blusa Cetim Gola Laço',c:1,p:129,top:0,stock:12,img:''}
-];
+// A lista de produtos fica em produtos.js
+
 // ===== utilidades =====
 const $=s=>document.querySelector(s), root=$('#root');
 const ls=(k,d)=>{try{return JSON.parse(localStorage.getItem('lm_'+k))??d}catch{return d}};
@@ -137,14 +127,19 @@ const TINT=['#EFE3E7','#E4EBE1','#EFE6D8','#DEE5F0'];
 const prod=id=>PRODUCTS.find(p=>p.id==id);
 let favs=ls('favs',[]), cart=ls('cart',[]), users=ls('users',{}), sess=ls('sess',null), q='', cat=-1, cur=null, after=null;
 const me=()=>sess&&users[sess];
-const tint=p=>`--t:${TINT[p.c%4]}`;
-const pic=p=>p.img?`<img src="${esc(p.img)}" alt="${esc(p.n)}" loading="lazy">`:`<div class="ph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l9 7-2 1v9H5v-9l-2-1 9-7z" opacity=".0"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg></div>`;
+const cats=p=>[].concat(p.c);
+const tint=p=>`--t:${TINT[cats(p)[0]%4]}`;
+const imgsOf=(p,ci=0)=>p.cores?(p.cores[ci]||p.cores[0]).imgs:(p.imgs||[]);
+const cidx=(p,n)=>Math.max(0,(p.cores||[]).findIndex(c=>c.n===n));
+const cc={};
+const swH=(p,cur,a)=>p.cores?`<div class="sw" role="group" aria-label="Cor">${p.cores.map((c,i)=>`<button data-a="${a}" data-id="${p.id}" data-i="${i}" aria-label="${esc(c.n)}" aria-pressed="${i===cur}"><span style="background:${c.hex}" class="${i===cur?'on':''}"></span></button>`).join('')}</div>`:'';
+const pic=(p,ci=0)=>imgsOf(p,ci)[0]?`<img src="${esc(imgsOf(p,ci)[0])}" alt="${esc(p.n)}" loading="lazy">`:`<div class="ph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l9 7-2 1v9H5v-9l-2-1 9-7z" opacity=".0"/><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg></div>`;
 const heart=on=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="${on?'#C8265F':'none'}" stroke="${on?'#C8265F':'#141214'}" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg>`;
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2600)}
-const cardHTML=p=>`<div class="card">${p.top?'<span class="tag">★ Destaque</span>':''}<button class="hrt" data-a="fav" data-id="${p.id}" aria-label="Favoritar"><span>${heart(favs.includes(p.id))}</span></button><button class="im" style="${tint(p)}" data-a="prod" data-id="${p.id}" aria-label="${esc(p.n)}">${pic(p)}</button><h3>${esc(p.n)}</h3><p class="pr">${brl(p.p)}</p></div>`;
+const cardHTML=p=>`<div class="card">${p.top?'<span class="tag">★ Destaque</span>':''}<button class="hrt" data-a="fav" data-id="${p.id}" aria-label="Favoritar"><span>${heart(favs.includes(p.id))}</span></button><button class="im" style="${tint(p)}" data-a="prod" data-id="${p.id}" aria-label="${esc(p.n)}">${pic(p,cc[p.id]||0)}</button><h3>${esc(p.n)}</h3><p class="pr">${brl(p.p)}</p>${swH(p,cc[p.id]||0,'ccolor')}</div>`;
 const gridHTML=l=>l.length?l.map(cardHTML).join(''):'<p class="emp">Nenhum produto encontrado.</p>';
 function renderGrid(){
- const l=PRODUCTS.filter(p=>(cat<0||p.c===cat)&&(!q||p.n.toLowerCase().includes(q.toLowerCase())));
+ const l=PRODUCTS.filter(p=>(cat<0||cats(p).includes(cat))&&(!q||p.n.toLowerCase().includes(q.toLowerCase())));
  $('#gt').textContent=q?`Resultados para “${q}”`:cat>=0?CATS[cat]:'Novidades';
  $('#grid').innerHTML=gridHTML(l);
  const n=cart.reduce((a,i)=>a+i.q,0), b=$('#cc');b.textContent=n;b.hidden=!n;
@@ -155,19 +150,21 @@ function close(){root.innerHTML='';cur=null}
 function refresh(){renderGrid();if(cur){const sc=root.querySelector('.md')?.scrollTop;open(cur);const m=root.querySelector('.md');if(m&&sc)m.scrollTop=sc}}
 // ===== views =====
 const vCats=()=>`<h2>Categorias</h2><div class="cg">${CATS.map((c,i)=>`<button data-a="cat" data-i="${i}">${c}</button>`).join('')}</div><p style="text-align:center;margin:16px 0 0"><button class="lk" data-a="catall">Ver todos os produtos</button></p>`;
-const vCat=i=>()=>{const l=PRODUCTS.filter(p=>p.c===i);return `<button class="lk" data-a="cats">← Voltar para Categorias</button><h2 style="margin-top:10px">${CATS[i]}</h2><p class="sub">${l.length} produto(s) encontrado(s)</p><div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`};
+const vCat=i=>()=>{const l=PRODUCTS.filter(p=>cats(p).includes(i));return `<button class="lk" data-a="cats">← Voltar para Categorias</button><h2 style="margin-top:10px">${CATS[i]}</h2><p class="sub">${l.length} produto(s) encontrado(s)</p><div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`};
 const vTop=()=>{const l=PRODUCTS.filter(p=>p.top);return `<h2>Mais Bem Avaliados ★ (${l.length})</h2><p class="sub">Peças marcadas com o selo de destaque da LÉLA MODAS.</p><div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`};
 const vFavs=()=>{const l=favs.map(prod).filter(Boolean);return `<h2>Meus Favoritos ♥ ${l.length?`(${l.length})`:''}</h2>`+(l.length?`<div class="grid" style="grid-template-columns:1fr 1fr">${gridHTML(l)}</div>`:`<div class="ctr" style="padding:16px 0"><p style="margin:0">Sua lista de favoritos está vazia.</p><p class="sub">Marque os produtos que mais gostar!</p><button class="btn w" data-a="go">Ver produtos</button></div>`)};
-let sel={id:0,size:'P'};
-const vProd=id=>()=>{const p=prod(id);return `<div class="pb" style="${tint(p)}">${pic(p)}</div><small style="font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a)">${CATS[p.c]}</small><h2 style="margin:4px 0 2px">${esc(p.n)}</h2><p style="margin:0 0 8px;font:800 24px var(--f);color:var(--a)">${brl(p.p)}</p><span class="ok">${p.stock} unidades disponíveis</span><label style="margin-top:16px">Selecione o tamanho</label><div class="sz">${SIZES.map(s=>`<button data-a="size" data-s="${s}" class="${sel.size===s?'on':''}">${s}</button>`).join('')}</div><div class="row"><button class="btn" data-a="add" data-id="${id}">Adicionar à sacola</button><button class="hb" data-a="fav" data-id="${id}" aria-label="Favoritar">${heart(favs.includes(id))}</button></div>`};
+const gal=(p,ci=0)=>{const L=imgsOf(p,ci);if(!L.length)return `<div class="pb" style="${tint(p)}">${pic(p,ci)}</div>`;
+ return `<div class="gal" style="${tint(p)}"><div class="gs" id="gs">${L.map((u,i)=>`<img src="${esc(u)}" alt="${esc(p.n)} - foto ${i+1}" ${i?'loading="lazy"':''}>`).join('')}</div>${L.length>1?`<button class="gn" style="left:8px" data-a="gprev" aria-label="Foto anterior">‹</button><button class="gn" style="right:8px" data-a="gnext" aria-label="Próxima foto">›</button><div class="dots">${L.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</div>`:''}</div>`};
+let sel={id:0,size:'P',cor:0};
+const vProd=id=>()=>{const p=prod(id);return `${gal(p,sel.cor)}<small style="font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--a)">${cats(p).map(i=>CATS[i]).join(' · ')}</small><h2 style="margin:4px 0 2px">${esc(p.n)}</h2><p style="margin:0 0 8px;font:800 24px var(--f);color:var(--a)">${brl(p.p)}</p><span class="ok">${p.stock} unidades disponíveis</span>${p.cores?`<label style="margin-top:16px">Cor: <b>${esc(p.cores[sel.cor].n)}</b></label>${swH(p,sel.cor,'pcolor')}`:''}<label style="margin-top:16px">Selecione o tamanho</label><div class="sz">${SIZES.map(s=>`<button data-a="size" data-s="${s}" class="${sel.size===s?'on':''}">${s}</button>`).join('')}</div><div class="row"><button class="btn" data-a="add" data-id="${id}">Adicionar à sacola</button><button class="hb" data-a="fav" data-id="${id}" aria-label="Favoritar">${heart(favs.includes(id))}</button></div>`};
 const sub=()=>cart.reduce((a,i)=>a+prod(i.id).p*i.q,0);
 const vCart=()=>{
  if(!cart.length)return `<h2>Minha Sacola</h2><div class="ctr" style="padding:16px 0"><p>Sua sacola está vazia.</p><button class="btn w" data-a="go">Ver produtos</button></div>`;
- return `<h2>Minha Sacola</h2>`+cart.map((it,k)=>{const p=prod(it.id);return `<div class="ci"><div class="t" style="${tint(p)}">${pic(p)}</div><div class="in"><h4>${esc(p.n)}</h4><div style="font-weight:700;color:var(--a);font-size:14px">${brl(p.p)}</div><div class="ct"><select data-a="csize" data-k="${k}" aria-label="Tamanho">${SIZES.map(s=>`<option ${s===it.size?'selected':''}>${s}</option>`).join('')}</select><div class="qt"><button data-a="dec" data-k="${k}" aria-label="Diminuir">−</button><span>${it.q}</span><button data-a="inc" data-k="${k}" aria-label="Aumentar">+</button></div><button class="lk" style="color:#C0262B;font-size:13px" data-a="rm" data-k="${k}">Remover</button></div></div></div>`}).join('')+
+ return `<h2>Minha Sacola</h2>`+cart.map((it,k)=>{const p=prod(it.id);return `<div class="ci"><div class="t" style="${tint(p)}">${pic(p,cidx(p,it.cor))}</div><div class="in"><h4>${esc(p.n)}</h4><div style="font-weight:700;color:var(--a);font-size:14px">${brl(p.p)}</div><div class="ct"><select data-a="csize" data-k="${k}" aria-label="Tamanho">${SIZES.map(s=>`<option ${s===it.size?'selected':''}>${s}</option>`).join('')}</select>${p.cores?`<select data-a="ccor" data-k="${k}" aria-label="Cor" style="width:112px">${p.cores.map(c=>`<option ${c.n===it.cor?'selected':''}>${esc(c.n)}</option>`).join('')}</select>`:''}<div class="qt"><button data-a="dec" data-k="${k}" aria-label="Diminuir">−</button><span>${it.q}</span><button data-a="inc" data-k="${k}" aria-label="Aumentar">+</button></div><button class="lk" style="color:#C0262B;font-size:13px" data-a="rm" data-k="${k}">Remover</button></div></div></div>`}).join('')+
  `<div style="padding-top:12px"><div class="tt"><span>Subtotal</span><span>${brl(sub())}</span></div><div class="tt"><span>Retirada na loja</span><span style="color:#1E7A3C;font-weight:700">GRÁTIS</span></div><div class="tt b"><span>Total</span><span>${brl(sub())}</span></div></div><button class="btn w" style="margin-top:12px" data-a="checkout">Finalizar pedido</button><p style="text-align:center;margin:12px 0 0"><button class="lk" data-a="close">Continuar comprando</button></p>`};
-const vConfirm=()=>{const u=me();return `<h2>Revisar pedido</h2>`+cart.map(i=>{const p=prod(i.id);return `<div class="tt"><span>${i.q}x ${esc(p.n)} <small style="color:var(--mut)">(Tam: ${i.size})</small></span><span>${brl(p.p*i.q)}</span></div>`}).join('')+`<div class="tt b"><span>Total</span><span>${brl(sub())}</span></div><div class="pk"><b>Retirada na loja</b><br>Seu pedido fica separado e embalado. A forma de pagamento é combinada pelo WhatsApp.</div><div style="font-size:14px;color:var(--mut)">Pedido em nome de <b style="color:var(--ink)">${esc(u.nome)}</b> · ${esc(u.tel)}</div><button class="btn w" style="margin-top:16px" data-a="confirm">Confirmar pedido</button><p style="text-align:center;margin:12px 0 0"><button class="lk" data-a="cart">← Voltar à sacola</button></p>`};
+const vConfirm=()=>{const u=me();return `<h2>Revisar pedido</h2>`+cart.map(i=>{const p=prod(i.id);return `<div class="tt"><span>${i.q}x ${esc(p.n)} <small style="color:var(--mut)">(Tam: ${i.size}${i.cor?', Cor: '+esc(i.cor):''})</small></span><span>${brl(p.p*i.q)}</span></div>`}).join('')+`<div class="tt b"><span>Total</span><span>${brl(sub())}</span></div><div class="pk"><b>Retirada na loja</b><br>Seu pedido fica separado e embalado. A forma de pagamento é combinada pelo WhatsApp.</div><div style="font-size:14px;color:var(--mut)">Pedido em nome de <b style="color:var(--ink)">${esc(u.nome)}</b> · ${esc(u.tel)}</div><button class="btn w" style="margin-top:16px" data-a="confirm">Confirmar pedido</button><p style="text-align:center;margin:12px 0 0"><button class="lk" data-a="cart">← Voltar à sacola</button></p>`};
 const msg=(u,items,total)=>{const ad=u.rua?`\n📍 *ENDEREÇO DO CLIENTE:* ${u.rua}, Nº ${u.num} Bairro: ${u.bairro} ${u.cidade} - ${u.uf} CEP: ${u.cep}`:'';
- return `🛍️ *NOVO PEDIDO - LÉLA MODAS*\n\n👤 *Cliente:* ${u.nome}\n📱 *Contato:* ${u.tel}\n📧 *E-mail:* ${u.email}${ad}\n\n🧾 *ITENS DO PEDIDO:*\n${items.map(i=>`• ${i.q}x ${prod(i.id).n} (Tam: ${i.size}) - ${brl(prod(i.id).p)}`).join('\n')}\n\n💰 *TOTAL DO PEDIDO:* ${brl(total)}\n🏬 *RETIRADA NA LOJA*\n\nGostaria de confirmar a forma de pagamento!`};
+ return `🛍️ *NOVO PEDIDO - LÉLA MODAS*\n\n👤 *Cliente:* ${u.nome}\n📱 *Contato:* ${u.tel}\n📧 *E-mail:* ${u.email}${ad}\n\n🧾 *ITENS DO PEDIDO:*\n${items.map(i=>`• ${i.q}x ${prod(i.id).n} (Tam: ${i.size}${i.cor?`, Cor: ${i.cor}`:''}) - ${brl(prod(i.id).p)}`).join('\n')}\n\n💰 *TOTAL DO PEDIDO:* ${brl(total)}\n🏬 *RETIRADA NA LOJA*\n\nGostaria de confirmar a forma de pagamento!`};
 let lastLink='';
 const vDone=()=>`<div class="ctr"><div class="chk"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E7A3C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h2 style="margin:0 0 8px">Parabéns, seu pedido foi concluído!</h2><p style="color:var(--mut);margin:0 0 20px">Agora é só seguir para o WhatsApp para combinar o pagamento e acompanhar o status do seu pedido. A retirada é feita na loja.</p><a class="btn wa w" href="${lastLink}" target="_blank" rel="noopener">Continuar pelo WhatsApp</a><p style="margin:14px 0 0"><button class="lk" data-a="close">Voltar à loja</button></p></div>`;
 const fld=(l,n,v='',x='')=>`<div><label for="f_${n}">${l}</label><input id="f_${n}" name="${n}" value="${esc(v)}" ${x}></div>`;
@@ -213,22 +210,24 @@ const A={
  cat:d=>open(vCat(+d.i)),catall:go,
  acct:()=>{after=null;open(me()?()=>vForm(me(),true):vLogin)},login:()=>open(vLogin),reg:()=>open(()=>vForm(null,false)),
  logout:()=>{sess=null;sv('sess',null);close();toast('Você saiu da conta.')},
- prod:d=>{sel={id:+d.id,size:'P'};open(vProd(+d.id))},size:d=>{sel.size=d.s;open(cur)},
+ prod:d=>{sel={id:+d.id,size:'P',cor:cc[+d.id]||0};open(vProd(+d.id))},size:d=>{sel.size=d.s;open(cur)},ccolor:d=>{cc[+d.id]=+d.i;refresh()},pcolor:d=>{sel.cor=+d.i;cc[sel.id]=sel.cor;open(cur)},
  fav:d=>{const id=+d.id;favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];sv('favs',favs);toast(favs.includes(id)?'Adicionado aos favoritos':'Removido dos favoritos');refresh()},
- add:d=>{const id=+d.id,i=cart.find(x=>x.id===id&&x.size===sel.size);i?i.q++:cart.push({id,size:sel.size,q:1});sv('cart',cart);renderGrid();toast('Adicionado à sacola');open(vCart)},
+ add:d=>{const id=+d.id,p=prod(id),cor=p.cores?p.cores[sel.cor].n:undefined,i=cart.find(x=>x.id===id&&x.size===sel.size&&x.cor===cor);i?i.q++:cart.push({id,size:sel.size,cor,q:1});sv('cart',cart);renderGrid();toast('Adicionado à sacola');open(vCart)},
  inc:d=>{const i=cart[+d.k];if(i.q<prod(i.id).stock)i.q++;else toast('Limite de estoque atingido');sv('cart',cart);refresh()},
  dec:d=>{const i=cart[+d.k];if(i.q>1)i.q--;sv('cart',cart);refresh()},
  rm:d=>{cart.splice(+d.k,1);sv('cart',cart);refresh()},
  checkout:()=>{if(!me()){after='co';toast('Entre ou cadastre-se para finalizar');open(vLogin)}else open(vConfirm)},
  confirm:()=>{const u=me(),total=sub();lastLink=`https://wa.me/${WA}?text=${encodeURIComponent(msg(u,cart,total))}`;cart=[];sv('cart',cart);renderGrid();open(vDone)}
 };
-const C={csize:(el)=>{const it=cart[+el.dataset.k];it.size=el.value;const j=cart.findIndex((x,i)=>i!==+el.dataset.k&&x.id===it.id&&x.size===it.size);if(j>=0){cart[j].q+=it.q;cart.splice(+el.dataset.k,1)}sv('cart',cart);toast('Tamanho atualizado');refresh()}};
+const mergeAt=k=>{const it=cart[k],j=cart.findIndex((x,i)=>i!==k&&x.id===it.id&&x.size===it.size&&x.cor===it.cor);if(j>=0){cart[j].q+=it.q;cart.splice(k,1)}sv('cart',cart);refresh()};
+const C={csize:el=>{cart[+el.dataset.k].size=el.value;toast('Tamanho atualizado');mergeAt(+el.dataset.k)},ccor:el=>{cart[+el.dataset.k].cor=el.value;toast('Cor atualizada');mergeAt(+el.dataset.k)}};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b.dataset,e)});
 document.addEventListener('change',e=>{const a=e.target.dataset.a;if(a&&C[a])C[a](e.target)});
 document.addEventListener('submit',async e=>{const f=e.target,n=f.dataset.f;if(!n)return;e.preventDefault();const b=f.querySelector('button');b.disabled=true;const m=await F[n](f);b.disabled=false;const p=f.querySelector('.err');if(m&&p)p.textContent=m});
 document.addEventListener('input',async e=>{const t=e.target,n=t.name;if(mask[n])t.value=mask[n](t.value);
  if(n==='cep'&&dig(t.value).length===8){try{const r=await(await fetch(`https://viacep.com.br/ws/${dig(t.value)}/json/`)).json();if(!r.erro){const f=t.form;f.rua.value=r.logradouro||'';f.bairro.value=r.bairro||'';f.cidade.value=r.localidade||'';f.uf.value=r.uf||'';f.num.focus()}}catch{}}
  if(t.id==='q'){q=t.value.trim();cat=-1;renderGrid()}});
+document.addEventListener('scroll',e=>{const g=e.target;if(g.id!=='gs')return;const i=Math.round(g.scrollLeft/g.clientWidth);g.parentNode.querySelectorAll('.dots i').forEach((d,k)=>d.classList.toggle('on',k===i))},true);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 renderGrid();
 </script>
